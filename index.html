@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Shipping Address</title>
+    <style>
+        /* Billing Address */
+        div.Input {
+            float: left;
+            width: 45%;
+            padding: 10px;
+            margin: 5px;
+            background-color: #e4e4e4;
+        }
+       /* Shipping address */
+            div.output {
+                float: right;
+                width: 45%;
+                padding: 10px;
+                margin: 5px;
+                background-color: #e4e4e4;
+            }
+    </style>
+</head>
+<body>
+    <div class="Input">
+        <h2>Billing Address</h2>
+            <h3>Name:</h3>
+                <input type="text" placeholder="Name" id="txtName" class="clearAll" />
+            <h3>Address:</h3>
+                <input type="text" placeholder="Address" id="txtAddress" class="clearAll" />
+            <h3>City:</h3>
+                <input type="text" placeholder="City" id="txtCity" class="clearAll" />
+            <h3>State:</h3>
+                <input type="text" placeholder="State" id="txtState" class="clearAll" />
+            <h3>Zip Code:</h3>
+                <input type="text" placeholder="Zip Code" id="txtZip" class="clearAll" /></br></br>
+        <!-- btn -->
+        <input type="button" value="Copy" id="btnCopy" />
+    </div>
+
+    <div class="output">
+        <h2>Shipping Address</h2>
+        <h3>Name:</h3>
+        <input type="text" placeholder="Name" id="txtName_2" class="clearAll" />
+        <h3>Address:</h3>
+        <input type="text" placeholder="Address" id="txtAddress_2" class="clearAll" />
+        <h3>City:</h3>
+        <input type="text" placeholder="City" id="txtCity_2" class="clearAll" />
+        <h3>State:</h3>
+        <input type="text" placeholder="State" id="txtState_2" class="clearAll" />
+        <h3>Zip Code:</h3>
+        <input type="text" placeholder="Zip Code" id="txtZip_2" class="clearAll" /></br></br>
+        <!-- btn -->
+        <input type="button" value="Clear All" id="btnClear" />
+    </div>
+
+    <!-- Do Not Remove DOM manupluation link-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        // DOM
+        $(document).ready(function () {
+            $("#btnCopy").on("click", function () {
+                var name = $("#txtName").val();
+                    $("#txtName_2").val(name);
+                var address = $("#txtAddress").val();
+                    $("#txtAddress_2").val(address);
+                var city = $("#txtCity").val();
+                    $("#txtCity_2").val(city);
+                var state = $("#txtState").val();
+                    $("#txtState_2").val(state);
+                var zip = $("#txtZip").val();
+                    $("#txtZip_2").val(zip);
+            });
+            // Clear All func
+            $("#btnClear").on("click", function () {
+                $(".clearAll").val("");
+            });
+        });
+
+        // Read Billing Information
+        var readBilling = function () {
+            var name = $("#txtName").val();
+            var address = $("#txtAddress").val();
+            var city = $("#txtCity").val();
+            var state = $("#txtState").val();
+            var zip = $("#txtZip").val();
+
+            //OBJ
+            var billingInfo = {
+                billingName: name,
+                billingAddress: address,
+                billingCity: city,
+                billingState: state,
+                billingZip: zip
+            };
+            return billingInfo;
+        };
+        // Copy to Shipping Func
+        var copyToShipping = function (billingData) {
+            $("#txtName_2").val(billingData.billingName);
+            $("#txtAddress_2").val(billingData.billingName);
+            $("#txtCity_2").val(billingData.billingName);
+            $("#txtState_2").val(billingData.billingName);
+            $("#txtZip_2").val(billingData.billingName);
+        };
+
+        var copyForum = function () {
+            var date = readBilling();
+            copyToShipping(data);   
+        };
+
+  </script>
+</body>
+</html>
+
